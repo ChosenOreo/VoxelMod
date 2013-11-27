@@ -5,7 +5,7 @@ namespace SGE.Camera {
     /// <summary>
     /// An abstract camera class.
     /// </summary>
-    public abstract class AbstractCamera : ICamera, IPlaceable {
+    public abstract class AbstractCamera : ICamera {
         #region Properties
         #region Implements ICamera
         /// <summary>

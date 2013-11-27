@@ -93,6 +93,11 @@ namespace SGE.Entity {
         /// Gets the vector representing the Z axis of the entity.
         /// </summary>
         Vector3 AxisZ { get; }
+
+        /// <summary>
+        /// Gets or sets the rotation speed around the three axes.
+        /// </summary>
+        Vector3 RotationSpeed { get; set; }
         #endregion
     }
 }

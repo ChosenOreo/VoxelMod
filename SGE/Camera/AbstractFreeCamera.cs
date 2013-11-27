@@ -8,6 +8,45 @@ namespace SGE.Camera {
     /// An abstract camera class that allows movement and rotation.
     /// </summary>
     public abstract class AbstractFreeCamera : AbstractCamera, IMovable, IRotatable, IUpdateable {
+        #region Constructors
+        /// <summary>
+        /// The default AbstractFreeCamera constructor.
+        /// </summary>
+        public AbstractFreeCamera()
+            : this(Vector3.Zero, -Vector3.UnitZ, new Vector3(2.0F, 2.0F, 2.0F), new Vector3(20.0F, 20.0F, 20.0F)) {
+        }
+
+        /// <summary>
+        /// The AbstractFreeCamera constructor.
+        /// </summary>
+        /// <param name="position">The initial position.</param>
+        /// <param name="target">The initial target.</param>
+        /// <param name="acceleration">The acceleration of the camera.</param>
+        /// <param name="rotationSpeed">The rotation speed of the camera.</param>
+        public AbstractFreeCamera(Vector3 position, Vector3 target, Vector3 acceleration, Vector3 rotationSpeed) {
+            _Position = position;
+            _Target = target;
+            _Acceleration = acceleration;
+            _RotationSpeed = rotationSpeed;
+
+            _Yaw = 0.0F;
+            _Pitch = 0.0F;
+            _Roll = 0.0F;
+
+            _TargetYaw = 0.0F;
+            _TargetPitch = 0.0F;
+            _TargetRoll = 0.0F;
+
+            _AxisX = Vector3.UnitX;
+            _AxisY = Vector3.UnitY;
+            _AxisZ = Vector3.UnitZ;
+
+            _TargetPosition = new Vector3(_Position);
+
+            _Velocity = Vector3.Zero;
+        }
+        #endregion
+
         #region Public Methods
         #region Implements IMovable
         /// <summary>
@@ -177,8 +216,8 @@ namespace SGE.Camera {
             Vector3 vec = direction.Normalized();
             float yawDot = Vector3.Dot(vec, Vector3.UnitZ);
             float pitchDot = Vector3.Dot(vec, Vector3.UnitY);
-            float yaw = 1.0F / (float)Math.Cos(yawDot);
-            float pitch = 1.0F / (float)Math.Cos(pitchDot);
+            float yaw = 1.0F / (float)System.Math.Cos(yawDot);
+            float pitch = 1.0F / (float)System.Math.Cos(pitchDot);
             _TargetYaw = yaw;
             _TargetPitch = pitch;
             _TargetRoll = roll;
@@ -210,8 +249,8 @@ namespace SGE.Camera {
             Vector3 vec = direction.Normalized();
             float yawDot = Vector3.Dot(vec, Vector3.UnitZ);
             float pitchDot = Vector3.Dot(vec, Vector3.UnitY);
-            float yaw = 1.0F / (float)Math.Cos(yawDot);
-            float pitch = 1.0F / (float)Math.Cos(pitchDot);
+            float yaw = 1.0F / (float)System.Math.Cos(yawDot);
+            float pitch = 1.0F / (float)System.Math.Cos(pitchDot);
             _Yaw = yaw;
             _Pitch = pitch;
             _Roll = roll;
@@ -339,6 +378,18 @@ namespace SGE.Camera {
                 return _AxisZ;
             }
         }
+
+        /// <summary>
+        /// Gets or sets the rotation speed around the three axes.
+        /// </summary>
+        Vector3 RotationSpeed {
+            get {
+                return _RotationSpeed;
+            }
+            set {
+                _RotationSpeed = value;
+            }
+        }
         #endregion
         #endregion
 
@@ -362,6 +413,8 @@ namespace SGE.Camera {
         protected Vector3 _AxisX;
         protected Vector3 _AxisY;
         protected Vector3 _AxisZ;
+
+        protected Vector3 _RotationSpeed;
         #endregion
         #endregion
     }
