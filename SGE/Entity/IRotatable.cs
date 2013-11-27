@@ -10,7 +10,7 @@ namespace SGE.Entity {
         /// </summary>
         /// <param name="yaw">The angle in degrees to rotate around the Y axis.</param>
         /// <param name="pitch">The angle in degrees to rotate around the X axis.</param>
-        /// <param name="roll">The angle in degrees to rotate aound the Z axis.</param>
+        /// <param name="roll">The angle in degrees to rotate around the Z axis.</param>
         void Rotate(float yaw, float pitch, float roll);
 
         /// <summary>
@@ -19,7 +19,7 @@ namespace SGE.Entity {
         /// </summary>
         /// <param name="yaw">The angle in degrees to rotate around the Y axis.</param>
         /// <param name="pitch">The angle in degrees to rotate around the X axis.</param>
-        /// <param name="roll">The angle in degrees to rotate aound the Z axis.</param>
+        /// <param name="roll">The angle in degrees to rotate around the Z axis.</param>
         void RotateImmediate(float yaw, float pitch, float roll);
 
         /// <summary>
@@ -28,8 +28,14 @@ namespace SGE.Entity {
         /// </summary>
         /// <param name="yaw">The angle in degrees to rotate to around the Y axis.</param>
         /// <param name="pitch">The angle in degrees to rotate to around the X axis.</param>
-        /// <param name="roll">The angle in degrees to rotate to aound the Z axis.</param>
+        /// <param name="roll">The angle in degrees to rotate to around the Z axis.</param>
         void RotateAbsolute(float yaw, float pitch, float roll);
+        /// <summary>
+        /// Sets the target rotation point of the entity to a set of yaw, pitch, and roll values
+        /// extracted from a direction vector. The rotation itself occurs in the Update method.
+        /// </summary>
+        /// <param name="direction">A vector representing the direction to face.</param>
+        void Rotate(Vector3 direction, float roll);
 
         /// <summary>
         /// Sets the target and current rotation points of the entity to a set of yaw, pitch, and
@@ -37,23 +43,15 @@ namespace SGE.Entity {
         /// </summary>
         /// <param name="yaw">The angle in degrees to rotate to around the Y axis.</param>
         /// <param name="pitch">The angle in degrees to rotate to around the X axis.</param>
-        /// <param name="roll">The angle in degrees to rotate to aound the Z axis.</param>
+        /// <param name="roll">The angle in degrees to rotate to around the Z axis.</param>
         void RotateAbsoluteImmediate(float yaw, float pitch, float roll);
-
-        /// <summary>
-        /// Sets the target rotation point of the entity to a set of yaw, pitch, and roll values
-        /// extracted from a direction vector. The rotation itself occurs in the Update method.
-        /// </summary>
-        /// <param name="direction">A vector representing the direction to face.</param>
-        void Rotate(Vector3 direction);
-
         /// <summary>
         /// Sets the target and current rotation points of the entity to a set of yaw, pitch, and
         /// roll values extracted from a direction vector. The rotation itself occurs in the 
         /// Update method.
         /// </summary>
         /// <param name="direction">A vector representing the direction to face.</param>
-        void RotateImmediate(Vector3 direction);
+        void RotateImmediate(Vector3 direction, float roll);
         #endregion
 
         #region Properties
