@@ -2,7 +2,7 @@
 using SGE.Event;
 
 namespace SGE.Entity {
-    public interface IMovable : IUpdateable {
+    public interface IMovable : IPlaceable, IUpdateable {
         #region Methods
         /// <summary>
         /// Sets the target position of the entity to a position relative to the
@@ -76,11 +76,6 @@ namespace SGE.Entity {
         #endregion
 
         #region Properties
-        /// <summary>
-        /// Gets the current position of the entity.
-        /// </summary>
-        Vector3 Position { get; }
-
         /// <summary>
         /// Gets the target position of the entity.
         /// </summary>

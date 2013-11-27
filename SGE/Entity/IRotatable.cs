@@ -2,7 +2,7 @@
 using SGE.Event;
 
 namespace SGE.Entity {
-    public interface IRotatable : IUpdateable {
+    public interface IRotatable : IPlaceable, IUpdateable {
         #region Methods
         /// <summary>
         /// Offsets the target rotation point of the entity to a set of yaw, pitch, and roll
@@ -95,11 +95,6 @@ namespace SGE.Entity {
         /// Gets the vector representing the Z axis of the entity.
         /// </summary>
         Vector3 AxisZ { get; }
-
-        /// <summary>
-        /// Gets the vector representing the direction the entity is facing.
-        /// </summary>
-        Vector3 Direction { get; }
         #endregion
     }
 }
